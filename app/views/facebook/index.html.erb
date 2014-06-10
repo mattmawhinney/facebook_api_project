@@ -1,2 +1,9 @@
-<h1>Facebook#index</h1>
-<p>Find me in app/views/facebook/index.html.erb</p>
+
+<h1>Facebook</h1>
+
+<dl>
+	<% @profile.each do |key, value| %>
+		<dt><%= key %>
+		<dd><%= value %>	
+	<% end %>
+</dl>
