@@ -65,7 +65,13 @@
 
         <% if @profile %>
           <h1><%= @profile["name"] %></h1>
-
+          <div class="jumbotron">
+            <!-- <h1>Hello, world!</h1>
+            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p> -->
+            
+            <% img_url = @profile["cover"]["source"] =%>
+            <img src=<%= img_url %> />
+          </div>
           <dl>
             <% @profile.each do |key, value| %>
               <dt><%= key %></dt>
@@ -74,10 +80,6 @@
           </dl>
         <% end %>
 
-          <div class="jumbotron">
-            <h1>Hello, world!</h1>
-            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
-          </div>
           <div class="row">
             <div class="col-6 col-sm-6 col-lg-4">
               <h2>Heading</h2>
