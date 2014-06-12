@@ -46,52 +46,46 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
+        <a href=<%= @profile["link"] %> target="_blank" >
+          <main class="col-md-9" style="border:solid">
+            
 
-        <main class="col-md-9">
-          
+            <!-- OUR CONTENT -->
 
-          <!-- OUR CONTENT -->
-
-          <% if @profile %>
-            <div class="row">
-              <div class="col-xs-12 col-md-10 fb-name">
-                <a href=<%= @profile["link"] %> target="_blank" ><h1><%= @profile["name"] %></h1></a>
-              </div>
-              <div class="col-xs-12 col-md-2 text-right fb-likes">
-                <h4><%= "#{@profile["likes"].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',')} likes" %></h4>
-              </div>
-            </div>
-
-            <div class="row">
-              
-              <!-- COVER -->
-              <div class="col-md-12">
-                <div id="tron" class="jumbotron text-center cover-container">              
-                  <% img_url = @profile["cover"]["source"] rescue "http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" =%>
-                  <img class="img-responsive" src=<%= img_url %> />
+            <% if @profile %>
+              <div class="row">
+                <div class="col-xs-12 col-md-10 fb-name">
+                  <h1><%= @profile["name"] %></h1>
+                </div>
+                <div class="col-xs-12 col-md-2 text-right fb-likes">
+                  <h4><%= "#{@profile["likes"].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',')} likes" %></h4>
                 </div>
               </div>
 
-              <!-- BIO -->
-              <div class="col-md-10 col-md-offset-1 bio">
-                <div class="justify">
-                  <h4>bio</h4>
-                  <p><%= @profile["bio"] %></p>
-                </div>
-              </div>
+              <div class="row">
                 
-            </div>  <!-- /.row -->
+                <!-- COVER -->
+                <div class="col-md-12">
+                  <div id="tron" class="jumbotron text-center cover-container">              
+                    <% img_url = @profile["cover"]["source"] rescue "http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" =%>
+                    <img class="img-responsive" src=<%= img_url %> />
+                  </div>
+                </div>
 
-            <dl>
-              <% @profile.each do |key, value| %>
-                <dt><%= key %></dt>
-                <dd><%= value %></dd>
-              <% end %>
-            </dl>
-          <% end %>
+                <!-- BIO -->
+                <% unless @profile["bio"].nil? %>
+                  <div class="col-md-10 col-md-offset-1 bio">
+                    <div class="justify">
+                      <h4>bio</h4>
+                      <p><%= @profile["bio"] %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>  <!-- /.row -->
+            <% end %>
 
-        </main>
-
+          </main>
+        </a>
    <!--     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="list-group">
             <a href="#" class="list-group-item active">Link</a>
