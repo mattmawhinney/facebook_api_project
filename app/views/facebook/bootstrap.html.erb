@@ -66,8 +66,8 @@
               
               <!-- COVER -->
               <div class="col-md-12">
-                <div class="jumbotron text-center cover-container">              
-                  <% img_url = @profile["cover"]["source"] =%>
+                <div id="tron" class="jumbotron text-center cover-container">              
+                  <% img_url = @profile["cover"]["source"] rescue "http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" =%>
                   <img class="img-responsive" src=<%= img_url %> />
                 </div>
               </div>
@@ -111,8 +111,8 @@
           <div class="col-md-12">
             <h1>Life on the Fast Lane</h1>
             <p>Stan Lee never left. I'm afraid his mind is no longer in mint condition. I don't like being outdoors, Smithers. For one thing, there's too many fat children. Can't you people take the law into your own hands? I mean, we can't be policing the entire city! Please do not offer my god a peanut.</p>
-            <h2>Cape Feare</h2>
-            <p>What's the point of going out? We're just going to wind up back here anyway. Fat Tony is a cancer on this fair city! He is the cancer and I am the&hellip;uh&hellip;what cures cancer? What's the point of going out? We're just going to wind up back here anyway. And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</p>
+            <h2>Gather Yee Rosebuds</h2>
+            <p>Forage 8-bit asymmetrical single-origin coffee, Banksy chia butcher fap tofu aesthetic DIY hoodie sartorial. Narwhal gluten-free Bushwick, Kickstarter trust fund shabby chic chillwave twee pour-over wayfarers. Ethnic art party sriracha beard, bespoke crucifix photo booth distillery DIY locavore viral hella selvage. Mixtape occupy you probably haven't heard of them, salvia fingerstache bitters Wes Anderson brunch vegan gastropub normcore PBR&B. Kitsch synth Pinterest banjo, VHS American Apparel Tonx sriracha tofu jean shorts aesthetic lo-fi try-hard normcore. Echo Park ugh 8-bit Kickstarter slow-carb, small batch chia fingerstache before they sold out freegan. Authentic photo booth salvia keytar ethical flannel.</p>
             <h3>Radioactive Man</h3>
             <p>I like my beer cold, my TV loud and my homosexuals flaming. The Internet King? I wonder if he could provide faster nudity&hellip; "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Oh, I'm in no condition to drive. Wait a minute. I don't have to listen to myself. I'm drunk. Whoa, slow down there, maestro. There's a *New* Mexico?</p>
           </div>
