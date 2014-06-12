@@ -1,15 +1,137 @@
-<%= form_tag("/facebook/index", method: "post") do %>
-  <%= text_field_tag(:name) %>
-  <%= submit_tag("Search") %>
-<% end %>
 
-<% if @profile %>
-  <h1><%= @profile["name"] %></h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-  <dl>
-    <% @profile.each do |key, value| %>
-      <dt><%= key %></dt>
-      <dd><%= value %></dd>
-    <% end %>
-  </dl>
-<% end %>
+    <title>Off Canvas Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse top-navbar" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header col-md-12">
+            <div class="col-md-6 search-for">
+              <%= form_tag("/facebook/index",method: "post") do %>
+                <%= text_field_tag(:name) %>
+                <%= submit_tag("Search") %>
+              <% end %>
+            </div>
+            <div class="navbar-brand text-right col-md-6">
+              <p>Facebook, Celebrity Look-up</p>
+            </div>
+          </div>  <!-- /.navbar-header -->
+        </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <a href=<%= @profile["link"] rescue "" %> target="_blank" >
+          <main class="col-md-9" style="border:solid">
+            
+            <% if @profile.nil? %>
+              <img class="img-responsive" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg">
+            <% end %>
+
+            <!-- OUR CONTENT -->
+
+            <% if @profile %>
+              <div class="row">
+                <div class="col-xs-12 col-md-10 fb-name">
+                  <h1><%= @profile["name"] %></h1>
+                </div>
+                <div class="col-xs-12 col-md-2 text-right fb-likes">
+                  <h4><%= "#{@profile["likes"].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',')} likes" %></h4>
+                </div>
+              </div>
+
+              <div class="row">
+                
+                <!-- COVER -->
+                <div class="col-md-12">
+                  <div id="tron" class="jumbotron text-center cover-container">              
+                    <% img_url = @profile["cover"]["source"] rescue "http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" =%>
+                    <img class="img-responsive" src=<%= img_url %> />
+                  </div>
+                </div>
+
+                <!-- BIO -->
+                <% unless @profile["bio"].nil? %>
+                  <div class="col-md-10 col-md-offset-1 bio">
+                    <div class="justify">
+                      <h4>bio</h4>
+                      <p><%= @profile["bio"] %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>  <!-- /.row -->
+            <% end %>
+
+          </main>
+        </a>
+   <!--     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+          </div>
+        </div>--><!--/span-->
+
+        <aside class="col-md-3">
+          <div class="col-md-12">
+            <h1>Life on the Fast Lane</h1>
+            <p>Stan Lee never left. I'm afraid his mind is no longer in mint condition. I don't like being outdoors, Smithers. For one thing, there's too many fat children. Can't you people take the law into your own hands? I mean, we can't be policing the entire city! Please do not offer my god a peanut.</p>
+            <h2>Gather Yee Rosebuds</h2>
+            <p>Forage 8-bit asymmetrical single-origin coffee, Banksy chia butcher fap tofu aesthetic DIY hoodie sartorial. Narwhal gluten-free Bushwick, Kickstarter trust fund shabby chic chillwave twee pour-over wayfarers. Ethnic art party sriracha beard, bespoke crucifix photo booth distillery DIY locavore viral hella selvage. Mixtape occupy you probably haven't heard of them, salvia fingerstache bitters Wes Anderson brunch vegan gastropub normcore PBR&B. Kitsch synth Pinterest banjo, VHS American Apparel Tonx sriracha tofu jean shorts aesthetic lo-fi try-hard normcore. Echo Park ugh 8-bit Kickstarter slow-carb, small batch chia fingerstache before they sold out freegan. Authentic photo booth salvia keytar ethical flannel.</p>
+            <h3>Radioactive Man</h3>
+            <p>I like my beer cold, my TV loud and my homosexuals flaming. The Internet King? I wonder if he could provide faster nudity&hellip; "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Oh, I'm in no condition to drive. Wait a minute. I don't have to listen to myself. I'm drunk. Whoa, slow down there, maestro. There's a *New* Mexico?</p>
+          </div>
+        </aside>  <!-- /.row /.aside -->
+
+      </div><!--/row-->
+
+      
+
+<!-- 
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+ -->
+    </div><!--/.container-->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
