@@ -13,4 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+.fb-name a{
+	color:#003399;
+}
+
+.fb-name a:hover{
+	text-decoration: none;
+}
+
+ .top-navbar{
+ 	background-color: #003399;
+ }
+
+.search-for{
+	padding-top:10px;
+}
+
+.fb-name h1{
+ 	font-size: 40px;
+ }
  
+.fb-likes{
+	color: #003399;
+}
+
+.justify{
+	text-align: justify;
+}
+
+.bio h4{
+	font-size: 32px;
+}
+
+.bio p{
+	font-size: 24px;
+}
+
+img{
+	border-radius: 5px;
+	margin: 0 auto;
+}

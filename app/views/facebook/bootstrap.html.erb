@@ -25,24 +25,21 @@
   </head>
 
   <body>
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="navbar navbar-fixed-top navbar-inverse top-navbar" role="navigation">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+        <div class="row">
+          <div class="navbar-header col-md-12">
+            <div class="col-md-6 search-for">
+              <%= form_tag("/facebook/bootstrap",method: "post") do %>
+                <%= text_field_tag(:name) %>
+                <%= submit_tag("Search") %>
+              <% end %>
+            </div>
+            <div class="navbar-brand text-right col-md-6">
+              <p>Facebook, Celebrity Look-up</p>
+            </div>
+          </div>  <!-- /.navbar-header -->
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
 
@@ -50,71 +47,52 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
+        <main class="col-md-9">
+          
 
-        <!-- OUR CONTENT -->
-        <div>
-          <%= form_tag("/facebook/bootstrap", method: "post") do %>
-            <%= text_field_tag(:name) %>
-            <%= submit_tag("Search") %>
+          <!-- OUR CONTENT -->
+
+          <% if @profile %>
+            <div class="row">
+              <div class="col-xs-12 col-md-10 fb-name">
+                <a href=<%= @profile["link"] %> target="_blank" ><h1><%= @profile["name"] %></h1></a>
+              </div>
+              <div class="col-xs-12 col-md-2 text-right fb-likes">
+                <h4><%= "#{@profile["likes"].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',')} likes" %></h4>
+              </div>
+            </div>
+
+            <div class="row">
+              
+              <!-- COVER -->
+              <div class="col-md-12">
+                <div class="jumbotron text-center cover-container">              
+                  <% img_url = @profile["cover"]["source"] =%>
+                  <img class="img-responsive" src=<%= img_url %> />
+                </div>
+              </div>
+
+              <!-- BIO -->
+              <div class="col-md-10 col-md-offset-1 bio">
+                <div class="justify">
+                  <h4>bio</h4>
+                  <p><%= @profile["bio"] %></p>
+                </div>
+              </div>
+                
+            </div>  <!-- /.row -->
+
+            <dl>
+              <% @profile.each do |key, value| %>
+                <dt><%= key %></dt>
+                <dd><%= value %></dd>
+              <% end %>
+            </dl>
           <% end %>
-        </div>
 
-        <% if @profile %>
-          <h1><%= @profile["name"] %></h1>
-          <div class="jumbotron">
-            <!-- <h1>Hello, world!</h1>
-            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p> -->
-            
-            <% img_url = @profile["cover"]["source"] =%>
-            <img src=<%= img_url %> />
-          </div>
-          <dl>
-            <% @profile.each do |key, value| %>
-              <dt><%= key %></dt>
-              <dd><%= value %></dd>
-            <% end %>
-          </dl>
-        <% end %>
+        </main>
 
-          <div class="row">
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
-
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+   <!--     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="list-group">
             <a href="#" class="list-group-item active">Link</a>
             <a href="#" class="list-group-item">Link</a>
@@ -127,15 +105,28 @@
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
           </div>
-        </div><!--/span-->
+        </div>--><!--/span-->
+
+        <aside class="col-md-3">
+          <div class="col-md-12">
+            <h1>Life on the Fast Lane</h1>
+            <p>Stan Lee never left. I'm afraid his mind is no longer in mint condition. I don't like being outdoors, Smithers. For one thing, there's too many fat children. Can't you people take the law into your own hands? I mean, we can't be policing the entire city! Please do not offer my god a peanut.</p>
+            <h2>Cape Feare</h2>
+            <p>What's the point of going out? We're just going to wind up back here anyway. Fat Tony is a cancer on this fair city! He is the cancer and I am the&hellip;uh&hellip;what cures cancer? What's the point of going out? We're just going to wind up back here anyway. And now, in the spirit of the season: start shopping. And for every dollar of Krusty merchandise you buy, I will be nice to a sick kid. For legal purposes, sick kids may include hookers with a cold.</p>
+            <h3>Radioactive Man</h3>
+            <p>I like my beer cold, my TV loud and my homosexuals flaming. The Internet King? I wonder if he could provide faster nudity&hellip; "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Oh, I'm in no condition to drive. Wait a minute. I don't have to listen to myself. I'm drunk. Whoa, slow down there, maestro. There's a *New* Mexico?</p>
+          </div>
+        </aside>  <!-- /.row /.aside -->
+
       </div><!--/row-->
 
-      <hr>
+      
 
+<!-- 
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
-
+ -->
     </div><!--/.container-->
 
 
