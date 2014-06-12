@@ -1,0 +1,24 @@
+
+body{
+}
+
+.container{
+	width: 800px;
+	margin: 0 auto;
+}
+
+.bio{
+	font-size: 30px;
+}
+
+.bio p{
+	text-align: justify;
+	display: inline;
+}
+
+.truncate-add-ellipsis::after{
+	color: #3333FF;
+	content: " show more";
+}
+
+
