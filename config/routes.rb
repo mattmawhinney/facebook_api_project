@@ -2,16 +2,23 @@ Rails.application.routes.draw do
 
   get 'facebook/index'
 
-  get 'facebook/test', to: 'facebook#test'
-  
-  get 'facebook/bootstrap'
-  post 'facebook/bootstrap', to:'facebook#bootstrap'
-  post 'facebook/test', to: 'facebook#test'
+  # post '/', to: 'facebook#index'
 
-  root 'facebook#index'
+  post 'facebook/index', to: 'facebook#index'
+
+  # root 'facebook#index'
+  
+
+  # get 'facebook/test', to: 'facebook#test'
+  
+  # get 'facebook/bootstrap'
+  # post 'facebook/bootstrap', to:'facebook#bootstrap'
+  # post 'facebook/test', to: 'facebook#test'
+
+  
 
   # post 'facebook/show', to: 'facebook#show'
-  post 'facebook/index', to: 'facebook#index'
+  
 
   get 'facebook/show', to: 'facebook#show'
 

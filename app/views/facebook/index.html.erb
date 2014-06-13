@@ -29,13 +29,12 @@
       <div class="container">
         <div class="row">
           <div class="navbar-header col-md-12">
-            
             <div class="navbar-brand col-md-6 pull-left">
               <p id="nav-bar-title">StacheBook</p>
             </div>
             <div class="col-md-6 search-for pull-right">
               
-              <%= form_tag("/facebook/test",method: "post") do %>
+              <%= form_tag("/facebook/index",method: "post") do %>
                 <%= text_field_tag(:name, 'Search StacheBook') %>
                 <input id="stache-submit" type="image" name="submit" value="submit" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg" />
                 
@@ -49,19 +48,13 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-        <main class="col-md-9">
-          <!-- need to redirect so link doesn't go to nowhere -->
-          <a href=<%= @profile["link"] rescue "" %> target="_blank" > </a>           
+        <main class="col-md-9" style="border:solid">
+          <a href=<%= @profile["link"] rescue "/" %> >            
             <% if @profile.nil? %>
-             <div id="top-profiles">
-              <h1><%= "Top Profiles on StacheBook" %></h1>
-             </div>
+              <img class="img-responsive" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg">
             <% end %>
 
             <!-- OUR CONTENT -->
-
-
-
 
             <% if @profile %>
               <div class="row">
@@ -89,55 +82,36 @@
                   <div class="col-md-10 col-md-offset-1 bio">
                     <div class="justify">
                       <h4>About</h4>
+                      
                       <p id="page-bio"><%= @profile["bio"] %></p>
                       <p id="toggle-me"></p>
                       <button id="click-me" vaule="">Read More</button>
-
                     </div>
                   </div>
                 <% end %>
               </div>  <!-- /.row -->
-
-
-              
             <% end %>
-
-
-            <% if !@profile %>
-              
-
-              <div class="row">
-                  <% @facebook_profiles.each do |hash| %>
-                  <div class="col-md-5 boxes shawdow">
-                  <!-- right now this will make content filled boxes in one column  -->
-                    <span><%= hash['name'] rescue "" %></span>
-                    <span class="pull-right"><%= hash['likes'].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',') rescue "" %></span>
-
-                    <% img_url = hash['cover']['source'] rescue "http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg" %>
-                      <img class=" main-page-image" src=<%= img_url %> />
-                  
-                  </div>
-                  <% end %>
-                </div>
-            <% end %>
-
-
           </main>
-
-
         
         <aside class="col-md-3">
           <div class="col-md-12">
-            <h1>Life on the Fast Lane</h1>
-            <p>Stan Lee never left. I'm afraid his mind is no longer in mint condition. I don't like being outdoors, Smithers. For one thing, there's too many fat children. Can't you people take the law into your own hands? I mean, we can't be policing the entire city! Please do not offer my god a peanut.</p>
-            <h2>Gather Yee Rosebuds</h2>
-            <p>Forage 8-bit asymmetrical single-origin coffee, Banksy chia butcher fap tofu aesthetic DIY hoodie sartorial. Narwhal gluten-free Bushwick, Kickstarter trust fund shabby chic chillwave twee pour-over wayfarers. Ethnic art party sriracha beard, bespoke crucifix photo booth distillery DIY locavore viral hella selvage. Mixtape occupy you probably haven't heard of them, salvia fingerstache bitters Wes Anderson brunch vegan gastropub normcore PBR&B. Kitsch synth Pinterest banjo, VHS American Apparel Tonx sriracha tofu jean shorts aesthetic lo-fi try-hard normcore. Echo Park ugh 8-bit Kickstarter slow-carb, small batch chia fingerstache before they sold out freegan. Authentic photo booth salvia keytar ethical flannel.</p>
-            <h3>Radioactive Man</h3>
-            <p>I like my beer cold, my TV loud and my homosexuals flaming. The Internet King? I wonder if he could provide faster nudity&hellip; "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Oh, I'm in no condition to drive. Wait a minute. I don't have to listen to myself. I'm drunk. Whoa, slow down there, maestro. There's a *New* Mexico?</p>
+            <h1>Prolong Life</h1>
+            <p id="demo"></p>
+            <div id="quote-space"></div>
+          </div>
+
+          <div class="col-md-12">
+           <h1>Low-T Treatment</h1>
+            <p id="demo"></p>
+            <div id="quote-space-2"></div>
+          </div>
+          
+          <div class="col-md-12">
+            <h1>Meet Singles Now </h1>
+            <p id="demo"></p>
+            <div id="quote-space-3"></div>
           </div>
         </aside>  <!-- /.row /.aside -->
-
-
 
       </div><!--/row-->
     </div><!--/.container-->
