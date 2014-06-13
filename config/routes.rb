@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   get 'facebook/index'
 
   # post '/', to: 'facebook#index'
+  root 'facebook#index'
+
 
   post 'facebook/index', to: 'facebook#index'
 
-  # root 'facebook#index'
+  
   
 
   # get 'facebook/test', to: 'facebook#test'
