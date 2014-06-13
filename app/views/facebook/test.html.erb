@@ -29,14 +29,17 @@
       <div class="container">
         <div class="row">
           <div class="navbar-header col-md-12">
-            <div class="col-md-6 search-for">
-              <%= form_tag("/facebook/index",method: "post") do %>
-                <%= text_field_tag(:name) %>
-                <%= submit_tag("Search") %>
-              <% end %>
+            
+            <div class="navbar-brand col-md-6 pull-left">
+              <p id="nav-bar-title">StacheBook</p>
             </div>
-            <div class="navbar-brand text-right col-md-6">
-              <p>Facebook, Celebrity Look-up</p>
+            <div class="col-md-6 search-for pull-right">
+              
+              <%= form_tag("/facebook/test",method: "post") do %>
+                <%= text_field_tag(:name, 'Search StacheBook') %>
+                <input id="stache-submit" type="image" name="submit" value="submit" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg" />
+                
+              <% end %>
             </div>
           </div>  <!-- /.navbar-header -->
         </div>
@@ -48,9 +51,11 @@
       <div class="row row-offcanvas row-offcanvas-right">
         <main class="col-md-9">
           <!-- need to redirect so link doesn't go to nowhere -->
-          <a href=<%= @profile["link"] rescue "" %> target="_blank" >            
+          <a href=<%= @profile["link"] rescue "" %> target="_blank" > </a>           
             <% if @profile.nil? %>
-              <img class="img-responsive" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg">
+             <div id="top-profiles">
+              <h1><%= "Top Profiles on StacheBook" %></h1>
+             </div>
             <% end %>
 
             <!-- OUR CONTENT -->
@@ -83,8 +88,11 @@
                 <% unless @profile["bio"].nil? %>
                   <div class="col-md-10 col-md-offset-1 bio">
                     <div class="justify">
-                      <h4>bio</h4>
-                      <p><%= @profile["bio"] %></p>
+                      <h4>About</h4>
+                      <p id="page-bio"><%= @profile["bio"] %></p>
+                      <p id="toggle-me"></p>
+                      <button id="click-me" vaule="">Read More</button>
+
                     </div>
                   </div>
                 <% end %>
@@ -100,12 +108,13 @@
 
               <div class="row">
                   <% @facebook_profiles.each do |hash| %>
-                  <div class="col-md-5 boxes">
+                  <div class="col-md-5 boxes shawdow">
                   <!-- right now this will make content filled boxes in one column  -->
-                    <h2><%= hash['name'] rescue "" %></h2>
+                    <span><%= hash['name'] rescue "" %></span>
+                    <span class="pull-right"><%= hash['likes'].to_s.gsub(/(?<=\d)(?=(?:\d{3})+\z)/, ',') rescue "" %></span>
 
                     <% img_url = hash['cover']['source'] rescue "http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg" %>
-                      <img class="img-responsive" src=<%= img_url %> />
+                      <img class=" main-page-image" src=<%= img_url %> />
                   
                   </div>
                   <% end %>

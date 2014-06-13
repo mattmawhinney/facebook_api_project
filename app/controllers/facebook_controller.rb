@@ -4,6 +4,9 @@ class FacebookController < ApplicationController
   url_first = "http://graph.facebook.com/"
 
 	def index
+		url_first = "http://graph.facebook.com/"
+
+	
 		if params[:name]
 			@search_for = params[:name].gsub(/\s+/, "")	# remove all whitespace, because we are searching for fb usernames
 			#will variabalize 
@@ -21,7 +24,23 @@ class FacebookController < ApplicationController
 
 			
 
-		# @urls_to_visit = urls.map {|url| url_first + url }
+		urls_to_visit = urls.map {|url| url_first + url }
+
+		facebook_profiles = []
+
+		urls_to_visit.each do |url| 
+			response = HTTParty.get(url)
+			profile = JSON::parse(response.body)
+
+			facebook_profiles << profile
+
+
+		end 
+
+			facebook_profiles.delete_at(0)
+
+			@facebook_profiles = facebook_profiles
+
 
 
 
@@ -29,7 +48,7 @@ class FacebookController < ApplicationController
 	end
 
 	def test 
-			  	url_first = "http://graph.facebook.com/"
+		url_first = "http://graph.facebook.com/"
 
 	
 		if params[:name]

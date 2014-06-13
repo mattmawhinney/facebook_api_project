@@ -7,11 +7,11 @@ $(document).ready(function () {
 	var truncated_string = original_string.substring(0,limit_string_number_of_characters);
   var substring_two = original_string.substring(limit_string_number_of_characters , original_string.length);
 
-  selector_of_string_content.text(truncated_string);
+  selector_of_string_content.html(truncated_string);
 
   
 
-  $('#toggle-me').text(substring_two);
+  // $('#toggle-me').text(substring_two);
 
 
   $('#click-me').click(function() {
