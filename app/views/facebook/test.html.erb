@@ -46,13 +46,17 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-        <main class="col-md-9" style="border:solid">
+        <main class="col-md-9">
+          <!-- need to redirect so link doesn't go to nowhere -->
           <a href=<%= @profile["link"] rescue "" %> target="_blank" >            
             <% if @profile.nil? %>
               <img class="img-responsive" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg">
             <% end %>
 
             <!-- OUR CONTENT -->
+
+
+
 
             <% if @profile %>
               <div class="row">
@@ -89,7 +93,29 @@
 
               
             <% end %>
+
+
+            <% if !@profile %>
+              
+
+              <div class="row">
+                  <% @facebook_profiles.each do |hash| %>
+                  <div class="col-md-5 boxes">
+                  <!-- right now this will make content filled boxes in one column  -->
+                    <h2><%= hash['name'] rescue "" %></h2>
+
+                    <% img_url = hash['cover']['source'] rescue "http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg" %>
+                      <img class="img-responsive" src=<%= img_url %> />
+                  
+                  </div>
+                  <% end %>
+                </div>
+            <% end %>
+
+
           </main>
+
+
         
         <aside class="col-md-3">
           <div class="col-md-12">
@@ -101,6 +127,8 @@
             <p>I like my beer cold, my TV loud and my homosexuals flaming. The Internet King? I wonder if he could provide faster nudity&hellip; "Thank the Lord"? That sounded like a prayer. A prayer in a public school. God has no place within these walls, just like facts don't have a place within an organized religion. Oh, I'm in no condition to drive. Wait a minute. I don't have to listen to myself. I'm drunk. Whoa, slow down there, maestro. There's a *New* Mexico?</p>
           </div>
         </aside>  <!-- /.row /.aside -->
+
+
 
       </div><!--/row-->
     </div><!--/.container-->

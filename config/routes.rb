@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get 'facebook/index'
+
+  get 'facebook/test', to: 'facebook#test'
   
   get 'facebook/bootstrap'
   post 'facebook/bootstrap', to:'facebook#bootstrap'
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
 
   # post 'facebook/show', to: 'facebook#show'
   post 'facebook/index', to: 'facebook#index'
+
+  get 'facebook/show', to: 'facebook#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

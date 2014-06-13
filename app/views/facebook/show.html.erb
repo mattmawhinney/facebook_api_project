@@ -1,9 +1,15 @@
+<%= @facebook_profiles %>
 
-<h1><%= @profile["name"] %></h1>
+<table>
+<% @facebook_profiles.each do |hash| %>
+	<tr>
+		<% hash.each_key do |key| %>
+		<td><%= key %></td>
+		<% end %>
+	</tr>
+<% end %>
+</table>
 
-<dl>
-	<% @profile.each do |key, value| %>
-		<dt><%= key %></dt>
-		<dd><%= value %></dd>
-	<% end %>
-</dl>
+
+
+
