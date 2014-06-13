@@ -46,9 +46,8 @@
     <div class="container">
 
       <div class="row row-offcanvas row-offcanvas-right">
-        <a href=<%= @profile["link"] rescue "" %> target="_blank" >
-          <main class="col-md-9" style="border:solid">
-            
+        <main class="col-md-9" style="border:solid">
+          <a href=<%= @profile["link"] rescue "" %> target="_blank" >            
             <% if @profile.nil? %>
               <img class="img-responsive" src="http://xpress.sfsu.edu/xpressmagazine/files/2012/11/STACHE_PINK.jpg">
             <% end %>
@@ -74,6 +73,7 @@
                     <img class="img-responsive" src=<%= img_url %> />
                   </div>
                 </div>
+          </a>
 
                 <!-- BIO -->
                 <% unless @profile["bio"].nil? %>
@@ -86,9 +86,8 @@
                 <% end %>
               </div>  <!-- /.row -->
             <% end %>
-
           </main>
-        </a>
+        
         <aside class="col-md-3">
           <div class="col-md-12">
             <h1>Life on the Fast Lane</h1>
