@@ -81,6 +81,13 @@
                   </div>
                 <% end %>
               </div>  <!-- /.row -->
+
+              <%= @profile["category"]%>
+              
+
+              <% @profile.each do |key, value| %>
+              <%= key %>
+              <% end %>
             <% end %>
 
           </main>
