@@ -1,0 +1,32 @@
+
+lightweight facebook api
+
+cover art
+	- celebrities // musicians, movie stars
+likes
+
+query facebook usernames, virtually every entry returns something
+	- roulette
+	- fan pages
+	- authentic pages
+
+discovery: celebrity alias
+	- Seth MacFarlane
+	- ???
+		"Brad Pitt" returns nothing
+		"hohoho" returns "Venantius Nugroho"
+	- "twitter" and "apple" return nothing
+	- "whitehouse"
+	- "oreo" vs "chocolate"
+
+examples of celebrity pages
+ashton kutcher
+beyonce
+rihanna
+eminem
+
+discovery: consumer business brands!
+	- swiffer
+	- nike
+	- starbucks
+	- 
