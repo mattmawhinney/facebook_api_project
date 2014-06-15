@@ -1,1 +1,3 @@
 StacheBook: A lightweight, lighthearted interface for the Facebook Graph API.
+
+Lives at: http://stachebook.pkbanks.com/
